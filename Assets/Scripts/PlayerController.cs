@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -6,6 +7,18 @@ public class PlayerController : MonoBehaviour
     public float speed = 1500f;
     public int health = 5;
     private int score = 0;
+
+
+    void Update()
+    {
+        if (health == 0)
+        {
+            Debug.Log("Game Over!");
+            health = 5;
+            score = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
 
     // Update is called once per frame
     void FixedUpdate()
